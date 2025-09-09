@@ -5,7 +5,6 @@ import plotly.express as px
 import locale
 import io
 
-locale.setlocale(locale.LC_ALL, 'C')
 
 ARQUIVO_EXCEL = 'Controle de Insumos das Obras.xlsx'
 
@@ -56,14 +55,12 @@ def validar_tag():
     return True
 
 def formatar_numero_br(numero):
-    #"""Formata um número para o padrão brasileiro (ex: 1.234,56)."""
+    """Formata um número para o padrão brasileiro (ex: 1.234,56)."""
     try:
-        # Usa a formatação do locale
-        return locale.format_string('%.2f', numero, grouping=True)
+        return f"{numero:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
     except (ValueError, TypeError):
-        # Se o número for inválido, retorna o próprio valor ou um padrão
-        return numero
-
+        return "0,00"
+        
 # Configuração da página
 st.set_page_config(page_title="Controle de Obras", layout="wide")
 
@@ -305,4 +302,5 @@ with tab2:
             st.plotly_chart(fig3)
         else:
          st.write("Ainda não há dados para exibir.")
+
 
