@@ -5,7 +5,7 @@ import plotly.express as px
 import locale
 import io
 
-locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+locale.setlocale(locale.LC_ALL, 'C')
 
 ARQUIVO_EXCEL = 'Controle de Insumos das Obras.xlsx'
 
@@ -305,3 +305,4 @@ with tab2:
             st.plotly_chart(fig3)
         else:
          st.write("Ainda não há dados para exibir.")
+
