@@ -2,10 +2,13 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 import plotly.express as px
-import locale
+from babel.dates import format_date
+from datetime import date
 import io
 
-locale.setlocale(locale.LC_ALL, '')
+
+data = date.today()
+print(format_date(data, locale="pt_BR"))
 
 ARQUIVO_EXCEL = 'Controle de Insumos das Obras.xlsx'
 
@@ -305,5 +308,6 @@ with tab2:
             st.plotly_chart(fig3)
         else:
          st.write("Ainda não há dados para exibir.")
+
 
 
